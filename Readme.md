@@ -11,10 +11,12 @@ Create a Firebase account: https://www.firebase.com
 Starting point app: https://github.com/msfrisbie/thinkster-firebase-tutorial
 or use yeoman:
 
-`npm install -g yeoman'
-'npm install -g generator-angular'
-'mkdir ang-fantasy-app && cd ang-fantasy-app`
-`yo angular`
+````
+npm install -g yeoman
+npm install -g generator-angular
+mkdir ang-fantasy-app && cd ang-fantasy-app
+yo angular
+````
 
 ## Fantasy Football
 

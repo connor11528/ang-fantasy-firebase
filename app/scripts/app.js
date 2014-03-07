@@ -1,23 +1,15 @@
 'use strict';
 
-var app = angular.module('angFantasyFirebaseApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute'
+var app = angular.module('angFantFire', [
+	'ngCookies',
+	'ngResource',
+	'ngSanitize',
+	'firebase',
+    'ngRoute',
 ]);
 
-// routes
-app.config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
-
-// firebase URL
-app.constant('FBURL', 'https://angfantasy.firebaseio.com');
+// bootstrap so you don't have to use <body ng-app='angFantFire'>
+angular.element(document).ready(function(){
+	app;
+	angular.bootstrap(document, ['angFantFire']);
+})
