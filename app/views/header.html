@@ -1,4 +1,4 @@
-<nav class='navbar navbar-default' ng-controller='NavCtrl'>
+<nav class='navbar navbar-inverse' ng-controller='AuthCtrl'>
 	<div class='navbar-header'>
 		<a class='navbar-brand'>Fantasy Football</a>
 	</div>
@@ -7,9 +7,12 @@
 	</ul>
 	
 	<ul class='nav navbar-nav pull-right'>
-		<li><a href='#/signup' ng-hide='signedIn()'>Sign up</a></li>
-		<li><a href='#/signin' ng-hide='signedIn()'>Sign in</a></li>
+		<li><a href='#' ng-click='signUp()' ng-hide='signedIn()'>Sign up</a></li>
+		<li><a href='#' ng-click='signIn()' ng-hide='signedIn()'>Sign in</a></li>
+		<li><p class='navbar-text' ng-show='signedIn()'>Signed in as {{user}}</p></li>
 		<li><a href='#' ng-show='signedIn()' ng-click='logout()'>Logout</a></li>
-		<li><p class='navbar-text' ng-show='signedIn()'>Signed in as {{user.email}}</p></li>
 	</ul>
+
+	<a href='#' class='dropdown-toggle' data-toggle='dropdown'>{{ user.name }}<b class='caret'></b>
+	</a>
 </nav>

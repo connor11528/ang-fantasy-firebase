@@ -1,34 +1,45 @@
 'use strict';
 
-app.controller('AuthCtrl', function($scope, Auth, $location){
-	if (Auth.signedIn()){
-		// if they're already authenticated we don't want them on signin or signup pages
-		$location.path('/');
-	}
+app.controller('AuthCtrl', function($scope, $firebaseSimpleLogin, $rootScope, $location, FBURL){
 	
-	// event fired on hard page load if user is successfully authenticated
-	$scope.$on('firebaseSimpleLogin:login', function(){
-		$location.path('/');
+	var firebase = new Firebase(FBURL);
+	var auth = new FirebaseSimpleLogin(firebase, function(error, user){
+		if (user){
+			// user is authenticated
+			console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
+		} else if (error){
+			// error while signing in
+			console.log('Error: ' + error);
+		} else {
+			// user is not logged in
+			console.log('Not logged in');
+		}
+	});
+		
+	$scope.signUp = function(){
+		auth.login('facebook', {
+			rememberMe: false,
+			scope:'email,user_likes,user_birthday'
+		});
+	};
+	
+	$scope.logout = function(){
+		console.log('logging out..');
+		auth.logout();
+	};
+	
+	auth.initialize(firebase, {scope: $rootScope, name: "user"});
+	
+	$rootScope.isSignedIn = function(){
+		return $rootScope.user !== null;
+	};
+	
+	// listen for events
+	$rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
+		console.log("User " + user.id + " successfully logged in!");
 	});
 	
-	// authenticate new user
-	$scope.signUp = function(){
-		Auth.signUp($scope.user)
-			.then(function(authUser){
-				console.log('You successfully signed up! User: ' + JSON.stringify(authUser));
-				$location.path('/')
-			}, function(err){
-				$scope.error = err.toString()
-			});
-	};
-	
-	// authenticate existing user
-	$scope.signIn = function(){
-		Auth.signIn($scope.user)
-			.then(function(){
-				$location.path('/');
-			}, function(err){
-				$scope.error = err.toString();
-			});
-	};
-})
+	$rootScope.$on("$firebaseAuth:logout", function(evt) {
+		console.log("User logged out!");
+	});
+});

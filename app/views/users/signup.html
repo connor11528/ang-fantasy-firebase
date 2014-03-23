@@ -1,11 +1,6 @@
-<div class='text-center'>
-	<h2>Sign up</h2>
-	<p ng-show='error' class='text-danger'>{{ error }}</p>
-	<form ng-submit='signUp()' role='form' novalidate><!-- novalidate turns off ugly html5 validation -->
-		<input type='email' placeholder='Email' class='form-control' ng-model='user.email'>
-		<br>
-		<input type='password' placeholder='Password' class='form-control' ng-model='user.password'>
-		<br>
-		<input type='submit' value='Sign up!' class='btn btn-lg btn-primary'>
+<div class='row' ng-controller='SignupCtrl'>
+	<form>
+		<input>
+		<input>
 	</form>
 </div>

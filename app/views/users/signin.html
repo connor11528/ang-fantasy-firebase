@@ -1,11 +1,7 @@
-<div class='text-center'>
-	<h2>Sign in</h2>
-	<p ng-show='error' class='text-danger'>{{ error }}</p>
-	<form ng-submit='signIn()' role='form' novalidate>
-		<input type='email' placeholder='Email' class='form-control' ng-model='user.email'>
+<div class='row' ng-controller='SigninCtrl'>
+	<form>
+		<input type='text' class='form-control'>
 		<br>
-		<input type='password' placeholder='Password' class='form-control' ng-model='user.password'>
-		<br>
-		<input type='submit' value='Sign in' class='btn btn-lg btn-primary'>
+		<input type='password' class='form-control'>
 	</form>
 </div>
