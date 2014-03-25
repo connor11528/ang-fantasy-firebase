@@ -21,14 +21,13 @@ app.config(['$routeProvider', function ($routeProvider) {
 // firebase URL
 app.constant('FBURL', 'https://angfantasy.firebaseio.com');
 
-app.run(['angularFireAuth', 'FBURL', '$rootScope',
-	function(angularFireAuth, FBURL, $rootScope){
-		angularFireAuth.initialize(new Firebase(FBURL), {
-			scope: $rootScope,
-			name: 'auth',	// user auth object will be $scope.auth when logged in
-			path: '/signin'
-		});
-		$rootScope.FBURL = FBURL;
-	}])
-
+// app.run(['angularFireAuth', 'FBURL', '$rootScope',
+// 	function(angularFireAuth, FBURL, $rootScope){
+// 		angularFireAuth.initialize(new Firebase(FBURL), {
+// 			scope: $rootScope,
+// 			name: 'auth',	// user auth object will be $scope.auth when logged in
+// 			path: '/signin'
+// 		});
+// 		$rootScope.FBURL = FBURL;
+// 	}])
 

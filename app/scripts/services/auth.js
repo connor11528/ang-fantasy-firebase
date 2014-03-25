@@ -1,6 +1,8 @@
 'use strict';
 
-app.factory('Auth', function($firebaseSimpleLogin, FBURL, $rootScope){
+app.factory('Auth', ['$firebaseSimpleLogin', 'FBURL', '$rootScope',
+	function($firebaseSimpleLogin, FBURL, $rootScope){
+		
 	var myUserId = null;
 	var firebase = new Firebase(FBURL);
 	
@@ -33,4 +35,4 @@ app.factory('Auth', function($firebaseSimpleLogin, FBURL, $rootScope){
 	};
 	
 	return Auth;
-});
+}]);

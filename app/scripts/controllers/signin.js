@@ -1,8 +1,7 @@
 'use strict';
 
-angular.module('fantasyApp.controllers.signin', ['fantasyApp.services.login'])
-  .controller('SigninCtrl', ['$scope', 'loginService', '$location',
-    function($scope, loginService, $location) {
+app.controller('SigninCtrl', ['$scope', '$location', 'Login',
+    function($scope, $location, Login) {
 
       $scope.$on('angularFireAuth:login', function () {
         $location.path('/');
@@ -14,7 +13,7 @@ angular.module('fantasyApp.controllers.signin', ['fantasyApp.services.login'])
 
       $scope.login = function(callback) {
         $scope.err = null;
-        loginService.login($scope.email, $scope.pass, '/', function(err, user) {
+        Login.login($scope.email, $scope.pass, '/', function(err, user) {
           $scope.err = err||null;
           typeof(callback) === 'function' && callback(err, user);
         });
@@ -26,5 +25,5 @@ angular.module('fantasyApp.controllers.signin', ['fantasyApp.services.login'])
       $scope.$on('angularFireAuth:login', function(){
         $location.path('/');
       })
-    }])
+}])
   

@@ -3,9 +3,8 @@
 
 /* Services */
 
-angular.module('angFantFire.services.login', ['fantasyApp.services.profileCreator'])
-  .factory('loginService', ['angularFireAuth', 'profileCreator', '$location', '$rootScope',
-    function(angularFireAuth, profileCreator, $location, $rootScope) {
+app.factory('Login', ['angularFireAuth', 'createProfile', '$location', '$rootScope',
+    function(angularFireAuth, Profile, $location, $rootScope) {
       return {
         login: function(email, pass, redirect, callback) {
           var p = angularFireAuth.login('password', {
@@ -34,6 +33,6 @@ angular.module('angFantFire.services.login', ['fantasyApp.services.profileCreato
             }
           });
         },
-        createProfile: profileCreator
+        createProfile: createProfile  // function to create new user in FB database
       }
     }])

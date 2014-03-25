@@ -1,8 +1,7 @@
 'use strict';
 
-angular.module('angFantFire.controllers.header', ['fantasyApp.services.login'])
-  .controller('HeaderController', ['$scope', '$location', 'loginService', 'angularFire', 'FBURL', 
-    function($scope, $location, loginService, angularFire, FBURL) {
+app.controller('HeaderCtrl', ['$scope', '$location', 'Login', 'angularFire', 'FBURL', 
+    function($scope, $location, Login, angularFire, FBURL) {
 
       $scope.$on("angularFireAuth:login", function() {
         // get user so we can display their name
@@ -11,10 +10,10 @@ angular.module('angFantFire.controllers.header', ['fantasyApp.services.login'])
       });
 
       $scope.logout = function() {
-        loginService.logout('/signin');
+        Login.logout('/signin');
       };
 
       $scope.navbarEntries = [
 
       ];
-    }])
+}])

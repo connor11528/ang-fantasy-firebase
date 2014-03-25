@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('angFantFire.services.nfl', [])
-	.factory('NFL', function(){
+app.factory('NFL', function(){
 
 		var NFL = {};
 

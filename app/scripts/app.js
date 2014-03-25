@@ -4,11 +4,8 @@ var app = angular.module('angFantFire', [
 	'ngCookies',
 	'ngResource',
 	'ngSanitize',
-	'firebase',
-	'ui.bootstrap',
     'ngRoute',
-    'angFantFire.services',
-	'angFantFire.controllers'
+	'firebase',
 ]);
 
 // bootstrap so you don't have to use <body ng-app='angFantFire'>
@@ -18,10 +15,4 @@ angular.element(document).ready(function(){
 })
 
 
-// var app = angular.module('fantasyApp',
-//   [ 'fantasyApp.config'
-//   , 'fantasyApp.controllers.header'
-//   , 'fantasyApp.controllers.signin'
-//   , 'fantasyApp.controllers.signup'
-//   , 'firebase', 'ui.bootstrap', 'ngRoute']
-//   )
+app.constant('FBURL', 'https://angfantasy.firebaseio.com/');

@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('AuthCtrl', function($scope, $firebaseSimpleLogin, $rootScope, $location, FBURL){
+app.controller('AuthCtrl', ["$scope", "$firebaseSimpleLogin", "$rootScope", "$location", "FBURL", 
+	function($scope, $firebaseSimpleLogin, $rootScope, $location, FBURL){
 	
 	var firebase = new Firebase(FBURL);
 	var auth = new FirebaseSimpleLogin(firebase, function(error, user){
@@ -27,9 +28,7 @@ app.controller('AuthCtrl', function($scope, $firebaseSimpleLogin, $rootScope, $l
 		console.log('logging out..');
 		auth.logout();
 	};
-	
-	auth.initialize(firebase, {scope: $rootScope, name: "user"});
-	
+		
 	$rootScope.isSignedIn = function(){
 		return $rootScope.user !== null;
 	};
@@ -42,4 +41,4 @@ app.controller('AuthCtrl', function($scope, $firebaseSimpleLogin, $rootScope, $l
 	$rootScope.$on("$firebaseAuth:logout", function(evt) {
 		console.log("User logged out!");
 	});
-});
+}]);

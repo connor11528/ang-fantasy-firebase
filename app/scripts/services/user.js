@@ -1,6 +1,7 @@
 'use strict';
 
-app.factory('User', function(Auth, $firebase, FBURL){
+app.factory('User', ['Auth', '$firebase', 'FBURL',
+	function(Auth, $firebase, FBURL){
 	var ref = new Firebase(FBURL).child('users');	// create object to hold all user info
 	
 	var users = $firebase(ref);	// firebase 'users' collection
@@ -17,4 +18,4 @@ app.factory('User', function(Auth, $firebase, FBURL){
 		}
 	};
 	return User;
-});
+}]);
